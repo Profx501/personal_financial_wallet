@@ -1,9 +1,10 @@
 import re
-import click
 from typing import Optional
 
+import click
+
 from base import BaseWallet
-from exceptions import DateError, SumError, CategoryError
+from exceptions import CategoryError, DateError, SumError
 
 
 class Wallet(BaseWallet):

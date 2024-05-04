@@ -1,7 +1,7 @@
 import click
 
 from constants import FILE_NAME
-from exceptions import DateError, SumError, CategoryError
+from exceptions import CategoryError, DateError, SumError
 from wallet import Wallet
 
 wallet = Wallet(FILE_NAME)
