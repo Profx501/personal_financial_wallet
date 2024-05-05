@@ -67,6 +67,7 @@ class Wallet(BaseWallet):
         """
         if not any((date, category, summa)):
             click.echo("[ERROR] Данные не были переданы.")
+            return
         with open(self.__file_name, "r", encoding="utf-8") as file:
             for line in file.readlines():
                 new_line: List[str] = line.split(",")
