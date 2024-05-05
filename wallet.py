@@ -1,5 +1,5 @@
 import re
-from typing import Optional, List
+from typing import List, Optional
 
 import click
 
@@ -11,6 +11,16 @@ class Wallet(BaseWallet):
     """Класс для работы с электронным кошельком."""
 
     def __init__(self, file_name: str):
+        self.__file_name = file_name
+
+    @property
+    def file_name(self):
+        """file_name getter property."""
+        return self.__file_name
+
+    @file_name.setter
+    def value(self, file_name: str):
+        """file_name setter property."""
         self.__file_name = file_name
 
     def get_balance(self) -> None:
