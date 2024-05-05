@@ -14,7 +14,7 @@ class BaseWallet(ABC):
             self,
             date: str,
             category: str,
-            sum: float,
+            summa: float,
             description: str,
     ) -> None:
         pass
@@ -24,7 +24,7 @@ class BaseWallet(ABC):
             self,
             date: Optional[str],
             category: Optional[str],
-            sum: Optional[float],
+            summa: Optional[float],
     ) -> None:
         pass
 
@@ -34,7 +34,7 @@ class BaseWallet(ABC):
             id: Optional[str],
             date: Optional[str],
             category: Optional[str],
-            sum: Optional[float],
+            summa: Optional[float],
             description: Optional[str],
     ) -> None:
         pass

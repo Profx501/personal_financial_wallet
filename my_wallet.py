@@ -27,23 +27,28 @@ def get_balance() -> None:
     prompt="Категория",
     help="Категория в формате Расход/Доход.",
 )
-@click.option("-s", "--sum", type=click.FLOAT, prompt="Сумма", help="Сумма.")
+@click.option("-s", "--summa", type=click.FLOAT, prompt="Сумма", help="Сумма.")
 @click.option(
     "-desc",
     "--description",
     prompt="Описание",
     help="Описание.",
 )
-def add_record(date: str, category: str, sum: float, description: str) -> None:
+def add_record(
+    date: str,
+    category: str,
+    summa: float,
+    description: str,
+) -> None:
     """Команда для добавление записи о доходах или расходах."""
-    wallet.add_record(date, category, sum, description)
+    wallet.add_record(date, category, summa, description)
 
 
 @click.command()
 @click.option("-id", "--id", type=click.INT, default=None, help="id.")
 @click.option("-d", "--date", default=None, help="Дата.")
 @click.option("-c", "--category", default=None, help="Категория.")
-@click.option("-s", "--sum", type=click.FLOAT, default=None, help="Сумма.")
+@click.option("-s", "--summa", type=click.FLOAT, default=None, help="Сумма.")
 @click.option(
     "-desc",
     "--description",
@@ -51,19 +56,25 @@ def add_record(date: str, category: str, sum: float, description: str) -> None:
     help="Описание.",
 )
 def edit_record(
-    id: int, date: str, category: str, sum: float, description: str
+    id: int, date: str, category: str, summa: float, description: str
 ) -> None:
     """Команда для изменения записи о доходах или расходах."""
-    wallet.edit_record(id, date, category, sum, description)
+    wallet.edit_record(id, date, category, summa, description)
 
 
 @click.command()
 @click.option("-d", "--date", default=None, help="По дате.")
 @click.option("-c", "--category", default=None, help="По категории.")
-@click.option("-s", "--sum", type=click.FLOAT, default=None, help="По сумме.")
-def search_record(date: str, category: str, sum: float) -> None:
+@click.option(
+    "-s",
+    "--summa",
+    type=click.FLOAT,
+    default=None,
+    help="По сумме.",
+)
+def search_record(date: str, category: str, summa: float) -> None:
     """Команда для поиска записи по дате, категории, сумме."""
-    wallet.search_record(date, category, sum)
+    wallet.search_record(date, category, summa)
 
 
 @click.command()

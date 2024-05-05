@@ -34,28 +34,28 @@ class Wallet(BaseWallet):
             self,
             date: str,
             category: str,
-            sum: float,
+            summa: float,
             description: str,
     ) -> None:
         """Функция для добавления информации о расходах и доходах."""
         category = category.title()
         self.validate_date(date)
-        self.validate_sum(sum)
+        self.validate_sum(summa)
         self.validate_category(category)
         with open(self.__file_name, "a", encoding="utf-8") as file:
-            file.write(f"{date},{category},{sum},{description}\n")
+            file.write(f"{date},{category},{summa},{description}\n")
 
     def search_record(
             self,
             date: Optional[str],
             category: Optional[str],
-            sum: Optional[float],
+            summa: Optional[float],
     ) -> None:
         """
         Функция для поиска записей о расходах и доходах по дате,
         категории, сумме.
         """
-        if not any((date, category, sum)):
+        if not any((date, category, summa)):
             click.echo("[ERROR] Данные не были переданы.")
         with open(self.__file_name, "r", encoding="utf-8") as file:
             for line in file.readlines():
@@ -66,8 +66,8 @@ class Wallet(BaseWallet):
                 elif category:
                     if new_line[1] == category.title():
                         click.echo(f'[INFO] {new_line}')
-                elif sum:
-                    if float(new_line[2]) == sum:
+                elif summa:
+                    if float(new_line[2]) == summa:
                         click.echo(f'[INFO] {new_line}')
 
     def edit_record(
@@ -75,20 +75,20 @@ class Wallet(BaseWallet):
             id: Optional[str],
             date: Optional[str],
             category: Optional[str],
-            sum: Optional[float],
+            summa: Optional[float],
             description: Optional[str],
     ) -> None:
         """Функция для изменения записи о расходах и доходах."""
         category = category.title() if category else category
         self.validate_date(date)
-        self.validate_sum(sum)
+        self.validate_sum(summa)
         self.validate_category(category)
         with open(self.__file_name, "r", encoding="utf-8") as file:
             record_list = file.readlines()
             record = record_list.pop(id).split(",")
             record[0] = date if date else record[0]
             record[1] = category if category else record[1]
-            record[2] = str(sum) if sum else record[2]
+            record[2] = str(summa) if summa else record[2]
             record[3] = description if description else record[3]
         with open(self.__file_name, "w", encoding="utf-8")as file:
             file.write("".join(record_list))
