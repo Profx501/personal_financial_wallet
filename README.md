@@ -75,24 +75,36 @@
   - Windows
   ```
   python my_wallet.py edit-record --help
-  python my_wallet.py edit-record
+  python my_wallet.py edit-record -id     -d        (Изменить дату)
+  python my_wallet.py edit-record -id     -с        (Изменить категорию)
+  python my_wallet.py edit-record -id     -s        (Изменить сумму)
+  python my_wallet.py edit-record -id     -desc   (Изменить описание)
   ```
   - Linux/macOS
   ```
   python3 my_wallet.py edit-record --help
-  python3 my_wallet.py edit-record
+  python3 my_wallet.py edit-record -id     -d        (Изменить дату)
+  python3 my_wallet.py edit-record -id     -с        (Изменить категорию)
+  python3 my_wallet.py edit-record -id     -s        (Изменить сумму)
+  python3 my_wallet.py edit-record -id     -desc   (Изменить описание)
   ```
 - Поиск записей по дате, категории и сумме:
   - Windows
   ```
   python my_wallet.py search-record --help
-  python my_wallet.py search-record
+  python my_wallet.py search-record -d     (по дате)
+  python my_wallet.py search-record -с     (по категории)
+  python my_wallet.py search-record -s     (по сумме)
   ```
   - Linux/macOS
   ```
   python3 my_wallet.py search-record --help
   python3 my_wallet.py search-record
+  python3 my_wallet.py search-record -d     (по дате)
+  python3 my_wallet.py search-record -с     (по категории)
+  python3 my_wallet.py search-record -s     (по сумме)
   ```
+
 - Выводит текущий баланс, расход и доход:
   - Windows
   ```
@@ -102,3 +114,6 @@
   ```
   python3 my_wallet.py get-balance
   ```
+
+## Прочее
+Файл с записями будет создан в директории с проектом. По умолчанию название файла personal_wallet.txt. Название файла можно поменять в файле constants.py.

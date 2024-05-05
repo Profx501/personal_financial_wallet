@@ -3,7 +3,7 @@ class DateError(Exception):
 
 
 class SumError(Exception):
-    """Ошибка ввода Cуммы."""
+    """Ошибка ввода Суммы."""
 
 
 class CategoryError(Exception):
