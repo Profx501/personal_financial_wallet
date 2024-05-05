@@ -81,6 +81,11 @@ my_balance.add_command(all_record)
 if __name__ == "__main__":
     try:
         my_balance()
+    except IndexError:
+        click.echo(
+            "[ERROR] Такой записи нету! узнать ID записи можно командой "
+            "all-record."
+        )
     except FileNotFoundError:
         click.echo("[ERROR] Вы еще не добавили записи.")
     except CategoryError:
