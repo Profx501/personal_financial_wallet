@@ -31,7 +31,7 @@ class BaseWallet(ABC):
     @abstractmethod
     def edit_record(
             self,
-            id: Optional[str],
+            id: Optional[int],
             date: Optional[str],
             category: Optional[str],
             summa: Optional[float],

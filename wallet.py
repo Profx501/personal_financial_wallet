@@ -1,5 +1,5 @@
 import re
-from typing import Optional
+from typing import Optional, List
 
 import click
 
@@ -10,7 +10,7 @@ from exceptions import CategoryError, DateError, SumError
 class Wallet(BaseWallet):
     """Класс для работы с электронным кошельком."""
 
-    def __init__(self, file_name):
+    def __init__(self, file_name: str):
         self.__file_name = file_name
 
     def get_balance(self) -> None:
@@ -19,7 +19,7 @@ class Wallet(BaseWallet):
         income: float = 0
         with open(self.__file_name, "r", encoding="utf-8") as file:
             for line in file.readlines():
-                new_line = line.split(",")
+                new_line: List[str] = line.split(",")
                 if new_line[1] == "Расход":
                     consumption += float(new_line[2])
                 else:
@@ -59,7 +59,7 @@ class Wallet(BaseWallet):
             click.echo("[ERROR] Данные не были переданы.")
         with open(self.__file_name, "r", encoding="utf-8") as file:
             for line in file.readlines():
-                new_line = line.split(",")
+                new_line: List[str] = line.split(",")
                 if date:
                     if new_line[0] == date:
                         click.echo(f'[INFO] {line}')
@@ -72,7 +72,7 @@ class Wallet(BaseWallet):
 
     def edit_record(
             self,
-            id: Optional[str],
+            id: Optional[int],
             date: Optional[str],
             category: Optional[str],
             summa: Optional[float],

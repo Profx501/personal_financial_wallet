@@ -4,11 +4,11 @@ from constants import FILE_NAME
 from exceptions import CategoryError, DateError, SumError
 from wallet import Wallet
 
-wallet = Wallet(FILE_NAME)
+wallet: Wallet = Wallet(FILE_NAME)
 
 
 @click.group()
-def my_balance():
+def my_balance() -> None:
     """Группа команд для управления кошельком."""
     pass
 
@@ -78,7 +78,7 @@ def search_record(date: str, category: str, summa: float) -> None:
 
 
 @click.command()
-def all_record():
+def all_record() -> None:
     """Команда для отображения всех записей."""
     wallet.all_record()
 
