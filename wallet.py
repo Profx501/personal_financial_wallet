@@ -62,13 +62,13 @@ class Wallet(BaseWallet):
                 new_line = line.split(",")
                 if date:
                     if new_line[0] == date:
-                        click.echo(f'[INFO] {new_line}')
+                        click.echo(f'[INFO] {line}')
                 elif category:
                     if new_line[1] == category.title():
-                        click.echo(f'[INFO] {new_line}')
+                        click.echo(f'[INFO] {line}')
                 elif summa:
                     if float(new_line[2]) == summa:
-                        click.echo(f'[INFO] {new_line}')
+                        click.echo(f'[INFO] {line}')
 
     def edit_record(
             self,
@@ -90,9 +90,9 @@ class Wallet(BaseWallet):
             record[1] = category if category else record[1]
             record[2] = str(summa) if summa else record[2]
             record[3] = description if description else record[3]
+            record_list.insert(id, ",".join(record))
         with open(self.__file_name, "w", encoding="utf-8")as file:
             file.write("".join(record_list))
-            file.write(",".join(record))
 
     def all_record(self) -> None:
         """Функция для вывода все записей о расходах и доходах."""
