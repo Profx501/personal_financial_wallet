@@ -89,7 +89,10 @@ class Wallet(BaseWallet):
             description: Optional[str],
     ) -> None:
         """Метод для изменения записи о расходах и доходах."""
-        if not any((id, date, category, summa, description)):
+        if not id:
+            click.echo("[ERROR] ID записи обязательно!.")
+            return
+        if not any((date, category, summa, description)):
             click.echo("[ERROR] Данные не были переданы.")
             return
         category = category.title() if category else None
