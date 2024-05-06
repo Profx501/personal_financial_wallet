@@ -89,6 +89,9 @@ class Wallet(BaseWallet):
             description: Optional[str],
     ) -> None:
         """Метод для изменения записи о расходах и доходах."""
+        if not any((id, date, category, summa, description)):
+            click.echo("[ERROR] Данные не были переданы.")
+            return
         category = category.title() if category else None
         self.is_valid(date, summa, category)
         with open(self.__file_name, "r", encoding="utf-8") as file:
@@ -131,7 +134,7 @@ class Wallet(BaseWallet):
         """Общий метод валидации."""
         if data:
             self.validate_date(data)
-        elif summa:
+        if summa:
             self.validate_sum(summa)
-        elif category:
+        if category:
             self.validate_category(category)
