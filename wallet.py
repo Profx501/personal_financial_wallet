@@ -97,8 +97,8 @@ class Wallet(BaseWallet):
             record[0] = date if date else record[0]
             record[1] = category if category else record[1]
             record[2] = str(summa) if summa else record[2]
-            record[3] = description if description else record[3]
-            record_list.insert(id, ",".join(record) + "\n")
+            record[3] = description + "\n" if description else record[3]
+            record_list.insert(id, ",".join(record))
         with open(self.__file_name, "w", encoding="utf-8")as file:
             file.write("".join(record_list))
 
